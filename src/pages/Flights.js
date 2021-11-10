@@ -7,7 +7,6 @@ const SERVER_URL = 'http://localhost:3000/flights.json';
 
 class Flights extends Component {
   constructor() {
-    console.log('constructor');
     super();
     this.state = {
       flights: []
@@ -16,7 +15,6 @@ class Flights extends Component {
   }
 
   componentDidMount() {
-    console.log('component did mount');
     const fetchFlights = () => {
       axios(SERVER_URL).then((response) => {
         this.setState({ flights: response.data })
@@ -25,6 +23,14 @@ class Flights extends Component {
     fetchFlights()
   }
 
+  _viewFlight(event) {
+    const url = `http://localhost:3001/flights/${ event.target.id }`;
+    window.location = url;
+  }
+
+
+
+
   renderFlightRow(flight) {
     if (flight) {
       return (
@@ -32,7 +38,7 @@ class Flights extends Component {
           <td>{ flight.origin }</td>
           <td>{ flight.destination }</td>
           <td>{ flight.date }</td>
-          <td><button>View Seats</button></td>
+          <td><button id={ flight.id } onClick={ this._viewFlight }>View Seats</button></td>
         </tr>
       )
     };
@@ -49,7 +55,6 @@ class Flights extends Component {
   }
 
   render() {
-    console.log('render');
     return (
       <div>
         <h1>Flights</h1>
