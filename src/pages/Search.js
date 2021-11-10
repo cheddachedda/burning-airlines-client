@@ -15,7 +15,8 @@ class Search extends Component {
 
     this._handleChange = this._handleChange.bind(this);
     this._handleSubmit = this._handleSubmit.bind(this);
-  }
+    this.renderFlight = this.renderFlight.bind(this);
+    }
 
   _handleChange(event) {
     const key = event.target.name;
@@ -38,6 +39,22 @@ class Search extends Component {
 
       this.setState({ flights: filteredFlights });
     });
+  }
+  _viewFlight(event) {
+    const url = `http://localhost:3001/flights/${ event.target.id }`;
+    window.location = url;
+  }
+  renderFlight(flight) {
+    if (flight) {
+      return (
+        <tr key={ flight.id }>
+          <td>{ flight.origin }</td>
+          <td>{ flight.destination }</td>
+          <td>{ flight.date }</td>
+          <td><button id={ flight.id } onClick={ this._viewFlight }>View seats</button></td>
+        </tr>
+      )
+    };
   }
 
   render() {
@@ -72,7 +89,7 @@ class Search extends Component {
         </form>
 
         <div>
-          { this.state.flights.map((flight) => <p>{flight.origin}</p> )}
+          { this.state.flights.map(this.renderFlight)}
         </div>
       </div>
     );
