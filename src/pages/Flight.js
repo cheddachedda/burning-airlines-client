@@ -33,7 +33,7 @@ class Flight extends Component {
         <p> Origin: { f.origin} </p>
         <p> Destination: { f.destination } </p>
         <p> Date: { f.date } </p>
-        <Plane />
+        <Plane seats={ this.state.flight.seats } />
       </div>
     );
   }

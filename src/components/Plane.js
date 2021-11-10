@@ -8,7 +8,7 @@ class Plane extends Component {
   }
 
   renderSeat(row, column) {
-    const seatName = `R${ row }C${ column }`
+    const seatName = `${row}-${column}`
     return (
       <button className="seat" key={seatName}>
         { seatName }
@@ -16,23 +16,32 @@ class Plane extends Component {
     );
   }
 
-  // TO DO: Fix this!!!!
-  renderRow(seats, rowNo) { // seats is an array of seats in that row
+  renderRow(seats, rowNo) {
     return (
-      <div className="seat-row" key={ rowNo }>
-        { seats.map((rowNo, i) => this.renderSeat(rowNo, i)) }
+      <div key={ rowNo }>
+        { seats.map(this.renderSeat) }
+        <span>{ rowNo }</span>
       </div>
     )
   }
 
   render() {
-    return (
-      <div>
-        { this.renderRow([ 0, 1, 2, 3, 4, 5 ], 0) } // AND THIS!!!
-        { this.renderRow([ 0, 1, 2, 3, 4, 5 ], 1) }
-      </div>
-    );
+    if (this.props.seats) {
+      return (
+        <div>
+          { this.props.seats.map(this.renderRow) }
+        </div>
+      );
+    } else {
+      return (
+        <div>
+        </div>
+      )
+    }
   }
 }
 
 export default Plane;
+
+// { this.renderRow([ 0, 1, 2, 3, 4, 5 ], 0) } // AND THIS!!!
+// { this.renderRow([ 0, 1, 2, 3, 4, 5 ], 1) }
