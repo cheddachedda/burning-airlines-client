@@ -17,7 +17,7 @@ class Flights extends Component {
 
   componentDidMount() {
     console.log('component did mount');
-    const fetchFlights =() => {
+    const fetchFlights = () => {
       axios(SERVER_URL).then((response) => {
         this.setState({ flights: response.data })
       });

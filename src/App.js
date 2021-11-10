@@ -1,7 +1,9 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
+import Search from './pages/Search';
 import Airplanes from './pages/Airplanes';
 import Flights from './pages/Flights';
-import Search from './pages/Search';
+import Flight from './pages/Flight';
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
         <Route path="/" element={<Search/>} />
         <Route path="/airplanes" element={<Airplanes/>} />
         <Route path="/flights" element={<Flights/>} />
+        <Route path="/flights/:id" element={<Flight/>} />
       </Routes>
     </Router>
   );
