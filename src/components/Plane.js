@@ -18,16 +18,16 @@ class Plane extends Component {
 
   renderSeat(seatName) {
     return (
-      <button className="seat">
+      <button className="seat" key={seatName}>
         { seatName }
       </button>
     );
   }
 
-  renderRow(seats) {
+  renderRow(seats, i) {
     console.log(seats);
     return (
-      <div className="seat-row">
+      <div className="seat-row" key={ i }>
         { seats.map(this.renderSeat) }
       </div>
     )
@@ -36,7 +36,7 @@ class Plane extends Component {
   render() {
     return (
       <div>
-        { this.state.seats.map(this.renderRow) }
+        { this.state.seats.map((row, i) => this.renderRow(row, i)) }
       </div>
     );
   }
