@@ -4,28 +4,27 @@ import Airplanes from './pages/Airplanes';
 import Flights from './pages/Flights';
 import Search from './pages/Search';
 
-
 function App() {
   return (
     <Router>
       <nav>
-         <div>
-           <Link to="/">Search</Link>
-         </div>
-         <div>
-           <Link to="/airplanes">Airplanes</Link>
-         </div>
-         <div>
-           <Link to="/flights">Flights</Link>
-         </div>
+        <div>
+          <Link to="/">Search</Link>
+        </div>
+        <div>
+          <Link to="/airplanes">Airplanes</Link>
+        </div>
+        <div>
+          <Link to="/flights">Flights</Link>
+        </div>
       </nav>
 
-       <Routes>
-         <Route path="/" element={<Search/>} />
-         <Route path="/airplanes" element={<Airplanes/>} />
-         <Route path="/flights" element={<Flights/>} />
-       </Routes>
-     </Router>
+      <Routes>
+        <Route path="/" element={<Search/>} />
+        <Route path="/airplanes" element={<Airplanes/>} />
+        <Route path="/flights" element={<Flights/>} />
+      </Routes>
+    </Router>
   );
 }
 
