@@ -4,6 +4,7 @@ import Search from './pages/Search';
 import Airplanes from './pages/Airplanes';
 import Flights from './pages/Flights';
 import Flight from './pages/Flight';
+import SignUp from './pages/Users/SignUp';
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
         <div>
           <Link to="/flights">Flights</Link>
         </div>
+        <div>
+          <Link to="/users/new">Sign up</Link>
+        </div>
       </nav>
 
       <Routes>
@@ -25,6 +29,8 @@ function App() {
         <Route path="/airplanes" element={<Airplanes/>} />
         <Route path="/flights" element={<Flights/>} />
         <Route path="/flights/:id" element={<Flight/>} />
+        <Route path="/users/new" element={<SignUp/>} />
+
       </Routes>
     </Router>
   );
