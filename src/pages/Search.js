@@ -24,8 +24,19 @@ class Search extends Component {
 
   _handleSubmit(event) {
     event.preventDefault();
-    axios.get(SERVER_URL).then((response) => {
-      this.setState({ flights: response.data });
+    axios(SERVER_URL).then((response) => {
+      // Filter the flights that match state
+      const allFlights = response.data;
+
+      const filteredFlights = allFlights.filter((flight) => {
+        if (flight.origin === this.state.origin &&
+            flight.destination === this.state.destination ||
+            flight.date === this.state.date) {
+          return flight;
+        }
+      })
+
+      this.setState({ flights: filteredFlights });
     });
   }
 
@@ -40,7 +51,6 @@ class Search extends Component {
             onChange={ this._handleChange }
             value={ this.state.origin }
             placeholder="JFK"
-            required
           />
           <input
             type="text"
@@ -48,7 +58,6 @@ class Search extends Component {
             onChange={ this._handleChange }
             value={ this.state.destination }
             placeholder="LAX"
-            required
           />
           <input
             type="date"
@@ -61,6 +70,10 @@ class Search extends Component {
             value="Search for flights"
           />
         </form>
+
+        <div>
+          { this.state.flights.map((flight) => <p>{flight.origin}</p> )}
+        </div>
       </div>
     );
   }
