@@ -4,16 +4,6 @@ import '../css/Plane.css';
 class Plane extends Component {
   constructor() {
     super();
-
-    // this.state = {
-    //   seats: [
-    //     [ '-', 1, '-', '-' ],
-    //     [ 7, '-', '-', '-' ],
-    //     [ 8, 9, '-', 10 ],
-    //     [ 14, '-', '-', 6 ]
-    //   ]
-    // };
-
     this.renderRow = this.renderRow.bind(this);
   }
 
@@ -37,7 +27,7 @@ class Plane extends Component {
   render() {
     return (
       <div>
-        
+        <Plane seats={ this.props.seats } />
       </div>
     );
   }
