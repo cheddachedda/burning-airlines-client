@@ -1,9 +1,29 @@
 import { Component } from 'react';
+import Plane from '../components/Plane';
 
 class Flights extends Component {
+  constructor() {
+    super();
+    this.state = {
+      flight: {
+        "id":10,
+        "origin":"JFK",
+        "destination":"SFO",
+        "date":"-4712-01-01",
+        "airplane_id":10,
+        "created_at":"2021-11-09T22:33:13.303Z",
+        "updated_at":"2021-11-09T22:33:13.303Z",
+        "url":"http://localhost:3000/flights/10.json",
+      }
+    };
+  }
+
   render() {
     return (
-      <h1>Flights</h1>
+      <div>
+        <h1>Flights</h1>
+        <Plane />
+      </div>
     );
   }
 }
