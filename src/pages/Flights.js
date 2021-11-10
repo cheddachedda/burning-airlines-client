@@ -2,7 +2,6 @@ import { Component } from 'react';
 import axios from 'axios';
 
 import '../css/Flights.css';
-import Plane from '../components/Plane';
 
 const SERVER_URL = 'http://localhost:3000/flights.json';
 
@@ -16,7 +15,6 @@ class Flights extends Component {
     this.renderFlightRow = this.renderFlightRow.bind(this);
   }
 
-
   componentDidMount() {
     console.log('component did mount');
     const fetchFlights =() => {
@@ -28,12 +26,13 @@ class Flights extends Component {
   }
 
   renderFlightRow(flight) {
-    if(flight) {
+    if (flight) {
       return (
-        <tr>
+        <tr key={ flight.id }>
           <td>{ flight.origin }</td>
           <td>{ flight.destination }</td>
           <td>{ flight.date }</td>
+          <td><button>View Seats</button></td>
         </tr>
       )
     };
@@ -43,7 +42,7 @@ class Flights extends Component {
     return (
       <table>
         <tbody>
-        { this.state.flights.map( this.renderFlightRow ) }
+          { this.state.flights.map( this.renderFlightRow ) }
         </tbody>
       </table>
     );

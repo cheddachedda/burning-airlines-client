@@ -1,4 +1,3 @@
-import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Airplanes from './pages/Airplanes';
 import Flights from './pages/Flights';
