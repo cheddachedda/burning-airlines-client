@@ -28,9 +28,6 @@ class Flights extends Component {
     window.location = url;
   }
 
-
-
-
   renderFlightRow(flight) {
     if (flight) {
       return (

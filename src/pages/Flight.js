@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import axios from 'axios';
 
+import Plane from '../components/Plane';
+
 class Flight extends Component {
   constructor() {
     super();
@@ -23,9 +25,14 @@ class Flight extends Component {
   }
 
   render() {
+    const f= this.state.flight;
     return (
       <div>
-        <h1>Flight { this.state.id || '-1' } show page coming soon</h1>
+        <h1>Flight # { f.id } </h1>
+        <p> Origin: {f.origin} </p>
+        <p> Destination: {f.destination} </p>
+        <p> Date: {f.date} </p>
+        <Plane seats={f.reserved_seats} />
       </div>
     );
   }
