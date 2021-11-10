@@ -1,41 +1,60 @@
 import { Component } from 'react';
-import Plane from '../components/Plane';
 import axios from 'axios';
+
+import '../css/Flights.css';
+import Plane from '../components/Plane';
 
 const SERVER_URL = 'http://localhost:3000/flights.json';
 
 class Flights extends Component {
   constructor() {
+    console.log('constructor');
     super();
     this.state = {
-      flight: {
-        "id":10,
-        "origin":"JFK",
-        "destination":"SFO",
-        "date":"-4712-01-01",
-        "airplane_id":10,
-        "created_at":"2021-11-09T22:33:13.303Z",
-        "updated_at":"2021-11-09T22:33:13.303Z",
-        "url":"http://localhost:3000/flights/10.json",
-      }
+      flights: []
     };
+    this.renderFlightRow = this.renderFlightRow.bind(this);
   }
 
 
   componentDidMount() {
+    console.log('component did mount');
     const fetchFlights =() => {
       axios(SERVER_URL).then((response) => {
-        console.log(response.data)
+        this.setState({ flights: response.data })
       });
     }
     fetchFlights()
   }
 
+  renderFlightRow(flight) {
+    if(flight) {
+      return (
+        <tr>
+          <td>{ flight.origin }</td>
+          <td>{ flight.destination }</td>
+          <td>{ flight.date }</td>
+        </tr>
+      )
+    };
+  }
+
+  createTable() {
+    return (
+      <table>
+        <tbody>
+        { this.state.flights.map( this.renderFlightRow ) }
+        </tbody>
+      </table>
+    );
+  }
+
   render() {
+    console.log('render');
     return (
       <div>
         <h1>Flights</h1>
-        <Plane />
+        { this.createTable() }
       </div>
     );
   }

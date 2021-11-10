@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import './Plane.css';
+import '../css/Plane.css';
 
 class Plane extends Component {
   constructor() {
