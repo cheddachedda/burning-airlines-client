@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import axios from 'axios';
 
-const SERVER_URL = 'http://localhost:3000/users';
+const SERVER_URL = 'http://localhost:3000/login.json';
 
 class LogIn extends Component {
   constructor() {
@@ -25,9 +25,9 @@ class LogIn extends Component {
     event.preventDefault();
     axios.post(SERVER_URL, {
       email: this.state.email,
-      password_digest: "chicken",
+      password: this.state.password,
     }).then((response) => {
-      console.log(this.state.name, "user created");
+      console.log(response);
     });
   }
 
