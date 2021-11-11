@@ -8,23 +8,22 @@ class Plane extends Component {
     this.renderSeat = this.renderSeat.bind(this);
   }
 
-  renderSeat(row, column) {
-    const seatName = `${row}-${column}`
+  renderSeat(row, column, userID) {
+    const rowName = (row + 1).toString(); // Adds 1 to rowNo (row's index)
+    const columnName = String.fromCharCode(column + 65);
+    const seatName = rowName + columnName;
+
     return (
-      <button
-        onClick={this.props.wawawa}
-        seatname={ seatname }
-        className="seat" key={seatName}>
+      <button key={seatName} className="seat" onClick={this.props.wawawa}>
         { seatName }
       </button>
     );
   }
 
-  renderRow(seats, rowNo) {
+  renderRow(seats, row) {
     return (
-      <div key={ rowNo }>
-        {seats.map((seat, number) => console.log(seat, number))}
-        <span>{ rowNo }</span>
+      <div key={ row }>
+        { seats.map((userID, column) => this.renderSeat(row, column, userID)) }
       </div>
     )
   }
@@ -46,6 +45,3 @@ class Plane extends Component {
 }
 
 export default Plane;
-
-// { this.renderRow([ 0, 1, 2, 3, 4, 5 ], 0) } // AND THIS!!!
-// { this.renderRow([ 0, 1, 2, 3, 4, 5 ], 1) }
