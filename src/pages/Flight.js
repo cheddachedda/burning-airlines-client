@@ -11,6 +11,7 @@ class Flight extends Component {
       flight: {},
       selected: {},
     }
+    this._selectSeat = this._selectSeat.bind(this);
   }
 
   componentDidMount() {
@@ -25,13 +26,9 @@ class Flight extends Component {
     fetchFlight();
   }
 
-  _selectSeat(event) {
-     event.preventDefault();
-     console.log(event.target);
-     
-
-  }
-
+  _selectSeat(seatName) {
+    this.setState({selected: seatName})
+  };
 
 
   render() {

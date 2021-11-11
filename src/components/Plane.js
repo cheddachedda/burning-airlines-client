@@ -4,9 +4,21 @@ import '../css/Plane.css';
 class Plane extends Component {
   constructor(props) {
     super(props);
+    // this.state = {
+    //   selected: {}
+    // };
     this.renderRow = this.renderRow.bind(this);
     this.renderSeat = this.renderSeat.bind(this);
+    this._onClick = this._onClick.bind(this);
   }
+
+  _onClick(event){
+    event.preventDefault();
+    // console.log(event.target);
+    // this.setState({ selected: event.target.name });
+    this.props.wawawa(event.target.name)
+  }
+
 
   renderSeat(row, column, userID) {
     const rowName = (row + 1).toString(); // Adds 1 to rowNo (row's index)
@@ -14,7 +26,7 @@ class Plane extends Component {
     const seatName = rowName + columnName;
 
     return (
-      <button key={seatName} className="seat" onClick={this.props.wawawa}>
+      <button key={seatName} name={seatName} className="seat" onClick={this._onClick}>
         { seatName }
       </button>
     );
