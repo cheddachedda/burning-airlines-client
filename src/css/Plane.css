@@ -1,7 +1,18 @@
 .seat {
   border: 1px solid black;
   display: inline-block;
+  height: 50px;
   margin: 2px;
   width: 50px;
+}
+
+.selected-seat {
+  background-color: coral;
+  border: 1px solid black;
+  color: white;
+  display: inline-block;
+  font-weight: bold;
   height: 50px;
+  margin: 2px;
+  width: 50px;
 }

@@ -25,8 +25,10 @@ class Plane extends Component {
     const columnName = String.fromCharCode(column + 65);
     const seatName = rowName + columnName;
 
+    const className = this.props.selected === seatName ? "selected-seat" : "seat";
+
     return (
-      <button key={seatName} name={seatName} className="seat" onClick={this._onClick}>
+      <button key={seatName} name={seatName} className={className} onClick={this._onClick} >
         { seatName }
       </button>
     );

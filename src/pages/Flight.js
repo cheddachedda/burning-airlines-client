@@ -9,9 +9,10 @@ class Flight extends Component {
     this.state = {
       id: window.location.href.split('/').pop(),
       flight: {},
-      selected: {},
+      selected: '',
     }
     this._selectSeat = this._selectSeat.bind(this);
+    this._clearSelected = this._clearSelected.bind(this);
   }
 
   componentDidMount() {
@@ -27,9 +28,23 @@ class Flight extends Component {
   }
 
   _selectSeat(seatName) {
-    this.setState({selected: seatName})
+    this.setState({ selected: seatName });
   };
 
+  _clearSelected() {
+    this.setState({ selected: '' });
+  }
+
+  renderBookingButton() {
+    if (this.state.selected !== '') {
+      return (
+        <div>
+          <button>Book seat { this.state.selected }</button>
+          <button onClick={ this._clearSelected }>Clear selection</button>
+        </div>
+      );
+    }
+  }
 
   render() {
     const f = this.state.flight;
@@ -40,7 +55,8 @@ class Flight extends Component {
         <p> Origin: { f.origin} </p>
         <p> Destination: { f.destination } </p>
         <p> Date: { f.date } </p>
-        <Plane wawawa={this._selectSeat} seats={ this.state.flight.seats }
+        { this.renderBookingButton() }
+        <Plane selected={ this.state.selected } wawawa={this._selectSeat} seats={ this.state.flight.seats }
         />
       </div>
     );
