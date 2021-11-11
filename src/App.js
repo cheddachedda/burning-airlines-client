@@ -5,6 +5,7 @@ import Airplanes from './pages/Airplanes';
 import Flights from './pages/Flights';
 import Flight from './pages/Flight';
 import SignUp from './pages/Users/SignUp';
+import LogIn from './pages/Users/LogIn';
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
         <div>
           <Link to="/users/new">Sign up</Link>
         </div>
+        <div>
+          <Link to="/users">Log in</Link>
+        </div>
       </nav>
 
       <Routes>
@@ -30,6 +34,7 @@ function App() {
         <Route path="/flights" element={<Flights/>} />
         <Route path="/flights/:id" element={<Flight/>} />
         <Route path="/users/new" element={<SignUp/>} />
+        <Route path="/users" element={<LogIn/>} />
 
       </Routes>
     </Router>
