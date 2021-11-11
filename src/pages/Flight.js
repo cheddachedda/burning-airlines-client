@@ -8,7 +8,8 @@ class Flight extends Component {
     super();
     this.state = {
       id: window.location.href.split('/').pop(),
-      flight: {}
+      flight: {},
+      selected: {},
     }
   }
 
@@ -24,6 +25,15 @@ class Flight extends Component {
     fetchFlight();
   }
 
+  _selectSeat(event) {
+     event.preventDefault();
+     console.log(event.target);
+     
+
+  }
+
+
+
   render() {
     const f = this.state.flight;
     return (
@@ -33,7 +43,8 @@ class Flight extends Component {
         <p> Origin: { f.origin} </p>
         <p> Destination: { f.destination } </p>
         <p> Date: { f.date } </p>
-        <Plane seats={ this.state.flight.seats } />
+        <Plane wawawa={this._selectSeat} seats={ this.state.flight.seats }
+        />
       </div>
     );
   }

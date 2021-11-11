@@ -2,15 +2,19 @@ import { Component } from 'react';
 import '../css/Plane.css';
 
 class Plane extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.renderRow = this.renderRow.bind(this);
+    this.renderSeat = this.renderSeat.bind(this);
   }
 
   renderSeat(row, column) {
     const seatName = `${row}-${column}`
     return (
-      <button className="seat" key={seatName}>
+      <button
+        onClick={this.props.wawawa}
+        seatname={ seatname }
+        className="seat" key={seatName}>
         { seatName }
       </button>
     );
@@ -19,7 +23,7 @@ class Plane extends Component {
   renderRow(seats, rowNo) {
     return (
       <div key={ rowNo }>
-        { seats.map(this.renderSeat) }
+        {seats.map((seat, number) => console.log(seat, number))}
         <span>{ rowNo }</span>
       </div>
     )
@@ -29,7 +33,7 @@ class Plane extends Component {
     if (this.props.seats) {
       return (
         <div>
-          { this.props.seats.map(this.renderRow) }
+          { this.props.seats.map((row, i) => this.renderRow(row, i)) }
         </div>
       );
     } else {
